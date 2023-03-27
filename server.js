@@ -1,6 +1,17 @@
 import {moviesRouter} from "./api/routes/moviesRouter.js"
 import express from  "express"
 import bodyParser from "body-parser";
+import mongodb from "mongodb"
+import dotenv from "dotenv"
+dotenv.config();
+
+const uri = process.env.URL;
+mongodb.MongoClient.connect(uri,  {
+    useUnifiedTopology: true
+  }, (err, client) => {
+    if (err) return console.error(err)
+    console.log('Connected to Database')
+  })
 const app = express()
 
 app.use(bodyParser.json());
