@@ -1,4 +1,5 @@
 import {moviesRouter} from "./api/routes/moviesRouter.js"
+import {propertyRouter} from "./api/routes/propertyRouter.js";
 import express from  "express"
 import bodyParser from "body-parser";
 import mongodb from "mongodb"
@@ -6,12 +7,7 @@ import dotenv from "dotenv"
 dotenv.config();
 
 const uri = process.env.URL;
-mongodb.MongoClient.connect(uri,  {
-    useUnifiedTopology: true
-  }, (err, client) => {
-    if (err) return console.error(err)
-    console.log('Connected to Database')
-  })
+
 const app = express()
 
 app.use(bodyParser.json());
@@ -22,6 +18,7 @@ app.get("/", (req, res)=>{
 })
 
 app.use("/movies", moviesRouter);
+app.use("/property", propertyRouter);
 
 let PORT = 3000
 app.listen(PORT, function() {
