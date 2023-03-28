@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose, {Schema} from "mongoose";
 
-export const propertySchema = new mongoose.Schema({
+const propertySchema = new Schema({
     address: {
         type: String,
         required: true
@@ -39,4 +39,6 @@ export const propertySchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Property', propertySchema)
+const model = mongoose.model('Property', propertySchema)
+// export const schema = model.schema;
+export default model;

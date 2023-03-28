@@ -2,16 +2,15 @@ import {moviesRouter} from "./api/routes/moviesRouter.js"
 import {propertyRouter} from "./api/routes/propertyRouter.js";
 import express from  "express"
 import bodyParser from "body-parser";
-import mongodb from "mongodb"
+import {connectDB} from "./config/db.js"
 import dotenv from "dotenv"
 dotenv.config();
 
-const uri = process.env.URL;
-
+connectDB();
 const app = express()
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res)=>{
     res.json({message: "This is Home Get Response"})
