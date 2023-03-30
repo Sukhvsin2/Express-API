@@ -30,7 +30,7 @@ const propertySchema = new Schema({
         required: true
     },
     mls: {
-        type: Number,
+        type: String,
         required: true,
     },
     possesion: {
